@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Smart Task Manager</h1>
+    
+    <a href="{% url 'user_logout' %}">🚪 Logout</a>
+    
+    <hr>
+
+    <!-- <a href="{% url 'add_task' %}">➕ Add Task</a> -->
+    <a href="{% url 'add_task' %}">➕ Add Task</a>
+    <hr>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong> -
+                {% if task.status %}
+                    Completed
+                {% else %}
+                    Pending
+                    <a href="{% url 'complete_task' task.id %}">Mask Completed</a>
+
+                {% endif %}
+
+                <a href="{% url 'delete_task' task.id %}">Delete Task</a>
+            </li>
+        {% empty %}
+            <li>No tasks available</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

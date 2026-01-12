@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(rgba(233, 233, 233, 0.92));
+        }
+
+        .container {
+            width: 70%;
+            margin: auto;
+            background: rgb(255, 255, 255);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .qty-input {
+            width: 60px;
+            padding: 5px;
+        }
+
+        .msg {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="msg {{ message.tags }}">
+                {{ message }}
+            </p>
+        {% endfor %}
+    {% endif %}
+
+    <div class="container">
+        <h1 style="color: #007bff; text-align: center;">Place Order</h1>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p class="price">
+            Points - {{ product.points }}
+        </p>
+        <p>
+            Available Stock {{ product.quantity }}
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label> Quantity:</label>
+            <input type="number" name="quantity" value="1" class="qty-input" required>
+
+            <br><br>
+            <button type="submit" class="btn">
+                Place Order
+            </button>
+        </form>
+        <br>
+        <a href="{% url 'product_list' %}" style="text-decoration: none; background-color: #007bff;" class="btn">Back Products</a>
+    </div>
+</body>
+
+</html>

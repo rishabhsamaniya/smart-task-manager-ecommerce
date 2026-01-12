@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <h2>Your Orders</h2>
+    
+    <ul>
+        {% for order in orders %}
+        <li>
+            <a href="{% url 'order_detail' order.id %}">
+                {{ order.product.name }} — Qty: {{ order.quantity }} — {{ order.status }}
+            </a>
+        </li>
+        {% empty %}
+        <p>No orders yet.</p>
+        {% endfor %}
+    </ul>
+
+
+</body>
+</html>

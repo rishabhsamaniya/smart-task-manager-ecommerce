@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <style>
+        body { font-family: Arial; background: #a3a3a2; }
+        .box {
+            
+            width: 70%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .label {
+            font-weight: bold;
+        }
+
+        .btn {
+            background: rgba(127, 237, 91, 0.568);
+            text-decoration: none;
+            color: rgb(12, 12, 12);
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 10px 16px;
+            width: 90%;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p class="title">Order Detail</p>
+
+        <p><span class="label">Product:</span> {{ order.product.name }}</p>
+
+        <p><span class="label">Quantity:</span> {{ order.quantity }}</p>
+
+        <p><span class="label">Total Price:</span> {{ order.total_points }}</p>
+
+        <p><span class="label">Order Date:</span> {{ order.created_at }}</p>
+
+        <p><span class="label">Order Status:</span> {{ order.status }}</p>
+
+        <br>
+
+        <a class="btn" href="{% url 'product_list' %}">⬅ Back to all products</a>
+    </div>
+</body>
+</html>
